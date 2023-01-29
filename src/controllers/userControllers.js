@@ -33,9 +33,9 @@ const getUsers = asyncHandler(async (req, res) => {
 const getUser = asyncHandler(async (req, res) => {
 	const id = req.body.id;
 	try {
-		let usersList = await User.findById(id);
+		let user = await User.findById(id);
 
-		res.status(200).json(usersList);
+		res.status(200).json(user);
 	} catch (error) {
 		console.log(error);
 	}
