@@ -5,7 +5,6 @@ const User = require('../models/user');
 const addUser = asyncHandler(async (req, res) => {
 	try {
 		const { name, email, phone } = req.body;
-		console.log(req.body);
 		await User.create({
 			name,
 			email,
@@ -13,7 +12,7 @@ const addUser = asyncHandler(async (req, res) => {
 		});
 		res.sendStatus(201);
 	} catch (error) {
-		// console.log(error);
+		console.log(error);
 		res.status(500).send('Something went wrong.');
 	}
 });
