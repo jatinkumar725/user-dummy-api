@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-app.use('/api/users', userRoutes);
+app.use('/users', userRoutes);
 
 // Handle unknown routes
 app.use((req, res) => res.send(usage));
