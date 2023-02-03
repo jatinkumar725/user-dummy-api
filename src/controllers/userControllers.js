@@ -19,9 +19,16 @@ const addUser = asyncHandler(async (req, res) => {
 
 // Get Users
 const getUsers = asyncHandler(async (req, res) => {
+	const { page } = req.query;
 	const filter = {};
+	let usersList;
 	try {
-		let usersList = await User.find(filter);
+		if (page) {
+			const skip = (page - 1) * 2;
+			usersList = await User.find(filter).skip(skip).limit(2);
+		} else {
+			usersList = await User.find(filter);
+		}
 
 		res.status(200).json(usersList);
 	} catch (error) {
